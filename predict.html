@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predict - Panini League</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#f1f5f9;color:#111;}
+.container{max-width:900px;margin:0 auto;padding:20px;}
+h1{margin-bottom:20px;}
+.player-area{display:flex;overflow-x:auto;gap:12px;padding-bottom:12px;}
+.player-card{flex:0 0 250px;background:white;padding:16px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.06);}
+.flex{display:flex;justify-content:space-between;align-items:center;}
+details{margin-top:10px;font-size:12px;}
+.card-header{margin-bottom:8px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Predict Scores</h1>
+<div class="player-area" id="player-area"></div>
+</div>
+
+<script>
+const players=[
+  {id:'p1',name:'Billy',team:'Manchester United'},
+  {id:'p2',name:'Sam',team:'Manchester City'},
+  {id:'p3',name:'Zoe',team:'Liverpool'}
+];
+
+const fixtures=[
+  {id:'f1',home:'Manchester United',away:'Liverpool',date:'2025-11-29',score:'2-1',scorers:[{name:'Rashford',team:'Manchester United',goals:2,assists:['Bruno']},{name:'Salah',team:'Liverpool',goals:1,assists:[]}]},
+  {id:'f2',home:'Chelsea',away:'Arsenal',date:'2025-11-30',score:'0-0',scorers:[]},
+  {id:'f3',home:'Tottenham',away:'Everton',date:'2025-12-01',score:'3-0',scorers:[{name:'Kane',team:'Tottenham',goals:3,assists:['Hojlund']}]}  
+];
+
+function calcPoints(player){
+  let total=0;
+  let details=[];
+  fixtures.forEach(f=>{
+    f.scorers.forEach(s=>{
+      if(s.team===player.team){
+        const g=(s.goals||0)*30;
+        const a=(s.assists?s.assists.length:0)*15;
+        if(g) details.push(f.id+': '+s.goals+' goal(s) +' + g);
+        if(a) details.push(f.id+': '+(s.assists?s.assists.length:0)+' assist(s) +' + a);
+        total+=g+a;
+      }
+    });
+  });
+  return {total,details};
+}
+
+function renderPlayers(){
+  const container=document.getElementById('player-area');
+  players.forEach(p=>{
+    const calc=calcPoints(p);
+    const card=document.createElement('div');
+    card.className='player-card';
+    let fixtureDetails = fixtures.map(f=>`<li>${f.home} vs ${f.away} (${f.score})</li>`).join('');
+    card.innerHTML=`
+      <div class="card-header"><strong>${p.name}</strong><br><small>${p.team}</small></div>
+      <div class="flex"><div>Total Points:</div><div style="font-weight:800">${calc.total}</div></div>
+      ${calc.details.length>0?`<details><summary>Gameweek Details</summary><ul>${calc.details.map(d=>`<li>${d}</li>`).join('')}</ul></details>`:''}
+      <details style="margin-top:8px"><summary>Fixtures</summary><ul>${fixtureDetails}</ul></details>
+    `;
+    container.appendChild(card);
+  });
+}
+
+renderPlayers();
+</script>
+</body>
+</html>
