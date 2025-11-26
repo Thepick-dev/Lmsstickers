@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predict - Football League</title>
+<style>
+body { margin:0; font-family: 'Arial', sans-serif; background:#fffbe6; }
+nav {
+  background:#ff6f61; padding:12px 20px; display:flex; gap:20px; font-weight:bold;
+}
+nav a { color:#fff; text-decoration:none; font-size:18px; }
+h1 { text-align:center; color:#ff3c3c; font-size:42px; margin:20px 0; text-shadow: 2px 2px #ffd700; }
+.container { max-width:900px; margin:0 auto; padding:10px; }
+.player-area { display:flex; overflow-x:auto; gap:16px; padding-bottom:12px; scroll-behavior:smooth; }
+.player-card { flex:0 0 260px; background:#fff3e6; border:4px solid #ffb347; border-radius:16px; box-shadow: 4px 4px 12px rgba(0,0,0,0.2); padding:16px; min-height:300px; }
+.player-card h2 { margin:0 0 8px 0; color:#ff6f61; }
+.player-card small { display:block; margin-bottom:12px; color:#333; }
+.card-section { margin-bottom:12px; }
+.card-section ul { padding-left:16px; }
+details { cursor:pointer; background:#ffd699; padding:4px 6px; border-radius:6px; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="predict.html">Predict</a>
+  <a href="table.html">Table</a>
+  <a href="rules.html">Rules</a>
+</nav>
+<h1>Predict Scores</h1>
+<div class="container">
+  <div class="player-area" id="player-area"></div>
+</div>
+
+<script>
+const players=[
+  {id:'p1',name:'Billy',team:'Manchester United'},
+  {id:'p2',name:'Sam',team:'Manchester City'},
+  {id:'p3',name:'Zoe',team:'Liverpool'}
+];
+
+const fixtures=[
+  {id:'f1',home:'Manchester United',away:'Liverpool',date:'2025-11-29',score:'2-1',scorers:[{name:'Rashford',team:'Manchester United',goals:2,assists:['Bruno']},{name:'Salah',team:'Liverpool',goals:1,assists:[]}]},
+  {id:'f2',home:'Chelsea',away:'Arsenal',date:'2025-11-30',score:'0-0',scorers:[]},
+  {id:'f3',home:'Tottenham',away:'Everton',date:'2025-12-01',score:'3-0',scorers:[{name:'Kane',team:'Tottenham',goals:3,assists:['Hojlund']}]}  
+];
+
+function calcPoints(player){
+  let total=0,details=[];
+  fixtures.forEach(f=>{
+    f.scorers.forEach(s=>{
+      if(s.team===player.team){
+        const g=(s.goals||0)*30;
+        const a=(s.assists?s.assists.length:0)*15;
+        if(g) details.push(f.home+' vs '+f.away+': '+s.goals+' goal(s) +'+g);
+        if(a) details.push(f.home+' vs '+f.away+': '+(s.assists?s.assists.length:0)+' assist(s) +'+a);
+        total+=g+a;
+      }
+    });
+  });
+  return {total,details};
+}
+
+function renderPlayers(){
+  const container=document.getElementById('player-area');
+  players.forEach(p=>{
+    const calc=calcPoints(p);
+    const card=document.createElement('div');
+    card.className='player-card';
+    let fixtureList = fixtures.map(f=>`<li>${f.home} vs ${f.away} (${f.score})</li>`).join('');
+    card.innerHTML=`
+      <h2>${p.name}</h2><small>${p.team}</small>
+      <div class="card-section"><strong>Total Points:</strong> ${calc.total}</div>
+      ${calc.details.length>0?`<details><summary>Gameweek Details</summary><ul>${calc.details.map(d=>`<li>${d}</li>`).join('')}</ul></details>`:''}
+      <details style="margin-top:8px"><summary>Fixtures</summary><ul>${fixtureList}</ul></details>
+    `;
+    container.appendChild(card);
+  });
+}
+
+renderPlayers();
+</script>
+</body>
+</html>
