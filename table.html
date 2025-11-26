@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LMS XII - Table</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Gothic&display=swap" rel="stylesheet">
+<style>
+:root{ --bg:#fff; --text:#111; --gold:#D4A031; --accent:#00f2ff; --max-w:980px; --pad:18px; }
+*{box-sizing:border-box}
+body{ margin:0; font-family:"League Gothic", Arial, sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; display:flex; justify-content:center; }
+.container{ width:100%; max-width:var(--max-w); padding:var(--pad); }
+.nav{ display:flex; justify-content:center; gap:28px; padding:12px 0; }
+.nav a{ font-weight:700; font-size:22px; text-transform:uppercase; font-style:italic; color:#000; text-decoration:none; }
+.nav a.current{ color:var(--accent); }
+
+h1.title{ font-family:"Bebas Neue", sans-serif; font-weight:400; font-size:clamp(100px,12vw,160px); margin:40px 0 10px; text-align:center; padding:20px; border:6px solid; border-radius:10px; border-image: linear-gradient(90deg,#00f2ff,#ff007f,#ffd400) 1; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.06); }
+.tagline{ font-size:clamp(26px,5vw,36px); text-transform:uppercase; font-weight:700; color:var(--accent); text-align:center; margin-bottom:18px; }
+
+/* table */
+.table-wrap{ background:#fff; border-radius:10px; padding:12px; border:3px solid rgba(0,0,0,0.03); box-shadow:0 12px 36px rgba(0,0,0,0.06); }
+.table{ width:100%; border-collapse:collapse; text-align:left; }
+.table th, .table td{ padding:10px; border-bottom:1px solid #eee; font-weight:900; text-transform:uppercase; }
+.table th{ background:#faf7ef; }
+.row-player{ display:flex; align-items:center; gap:12px; }
+.color-strip{ width:12px; height:42px; border-radius:4px; margin-right:8px; }
+.portrait-mini{ width:44px; height:56px; border:3px solid var(--gold); border-radius:6px; background:#f3f3f3; display:inline-block; }
+
+/* editable cell hint */
+.edit-hint{ font-size:12px; color:#666; font-weight:700; margin-top:8px; display:block; }
+
+@media(max-width:720px){
+  .portriat-mini{ display:none; }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href
