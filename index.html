@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LMS XII - Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Gothic&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --text:#000;
+  --accent-home:#ff007f;
+  --max-w:960px;
+  --gap:28px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family:"League Gothic", Arial, sans-serif;
+  background:var(--bg); color:var(--text); display:flex; justify-content:center;
+}
+.container{ width:100%; max-width:var(--max-w); padding:20px; }
+.nav{ display:flex; justify-content:center; gap:28px; padding:12px 0; }
+.nav a{ font-weight:700; font-size:22px; text-transform:uppercase; font-style:italic; color:#000; text-decoration:none; }
+.nav a.current{ color:var(--accent-home); }
+h1.title{
+  font-family:"Bebas Neue", sans-serif; font-weight:400;
+  font-size:clamp(100px,12vw,160px); margin:40px 0 10px; text-align:center;
+  padding:20px; border:2px solid;
+  border-image: linear-gradient(90deg,#ff007f,#00f2ff,#ffd400) 1;
+  border-radius:8px; box-shadow: inset 0 -4px 10px rgba(0,0,0,0.04);
+}
+.tagline{
+  font-size:clamp(26px,5vw,36px); text-transform:uppercase; font-weight:700;
+  color:var(--accent-home); text-align:center; margin-bottom:var(--gap);
+}
+main{ text-align:center; padding:8px; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="index.html" class="current">Home</a>
+      <a href="predict.html">Predict</a>
+      <a href="table.html">Table</a>
+      <a href="rules.html">Rules</a>
+    </nav>
+
+    <header>
+      <h1 class="title">LMS XII</h1>
+      <div class="tagline">LET'S BE HAVING YOU</div>
+    </header>
+
+    <main>
+      <!-- Homepage content (left intentionally minimal) -->
+      <p style="font-weight:700; text-transform:uppercase;">Welcome to LMS XII — sticker-album style.</p>
+    </main>
+  </div>
+</body>
+</html>
