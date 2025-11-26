@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LMS XII - Rules</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=League+Gothic&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff; --text:#111; --gold:#D4A031; --accent:#ffd400; --max-w:980px;
+  --compact-font:13px; --pad:18px;
+}
+*{box-sizing:border-box}
+body{ margin:0; font-family:"League Gothic", Arial, sans-serif; background:var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; display:flex; justify-content:center;}
+.container{ width:100%; max-width:var(--max-w); padding:var(--pad); }
+.nav{ display:flex; justify-content:center; gap:28px; padding:12px 0; }
+.nav a{ font-weight:700; font-size:22px; text-transform:uppercase; font-style:italic; color:#000; text-decoration:none; }
+.nav a.current{ color:var(--accent); }
+
+h1.title{ font-family:"Bebas Neue", sans-serif; font-weight:400; font-size:clamp(100px,12vw,160px); margin:40px 0 10px; text-align:center; padding:20px; border:6px solid; border-radius:10px; border-image: linear-gradient(90deg,#ffd400,#ff007f,#00f2ff) 1; box-shadow: inset 0 -8px 18px rgba(0,0,0,0.06); }
+.tagline{ font-size:clamp(24px,4.5vw,34px); text-transform:uppercase; font-weight:700; color:var(--accent); text-align:center; margin-bottom:12px; }
+
+/* compact rules container */
+.rules-wrap{ background:#fff; border-radius:10px; padding:12px; border:3px solid rgba(0,0,0,0.03); box-shadow:0 12px 36px rgba(0,0,0,0.06); }
+.rules-text{ font-size:15px; line-height:1.5; margin-bottom:10px; }
+
+/* compact table */
+.compact-table{ width:100%; border-collapse:collapse; font-size:var(--compact-font); margin-top:10px; }
+.compact-table th, .compact-table td{ padding:6px 8px; border:1px solid #eee; text-align:center; }
+.compact-table th{ font-weight:900; background:#faf7ef; text-transform:uppercase; }
+
+/* narrow columns */
+.compact-table col.result{ width:90px; }
+.compact-table col.qgap{ width:50px; }
+.compact-table col.points{ width:64px; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="predict.html">Predict</a>
+      <a href="table.html">Table</a>
+      <a href="rules.html" class="current">Rules</a>
+    </nav>
+
+    <header>
+      <h1 class="title">LMS XII</h1>
+      <div class="tagline">RULES</div>
+    </header>
+
+    <main>
+      <div class="rules-wrap">
+        <div class="rules-text">
+          <p>At the start of each gameweek, pick a team you think will win and a player you think will score and assist. You can only pick each team and player once throughout the competition. Points are awarded based on your selected team’s result according to the table below.</p>
+          <p>The teams are split into quartiles based on league position at the start of the gameweek. Points reward bravery — away wins against higher quartile teams are worth more! Players score points for any goals and assists. Use Haaland wisely!</p>
+          <p>The competition lasts until the end of the season. The player with the most points at the end wins. What constitutes a gameweek is at the organiser’s discretion.</p>
+          <p><strong>BE BRAVE — COWARDICE WILL GET YOU NOWHERE!</strong></p>
+        </div>
+
+        <h3 style="margin:8px 0 6px;font-family:'Bebas Neue',sans-serif;">Team Points Table</h3>
+        <div style="overflow-x:auto;">
+          <table class="compact-table" role="table" aria-label="Team points">
+            <colgroup><col class="result"/><col class="qgap"/><col class="points"/></colgroup>
+            <thead><tr><th>Result / Venue</th><th>Q-Gap</th><th>Team Points</th></tr></thead>
+            <tbody>
+              <tr><td>W / H</td><td>+3</td><td>90</td></tr>
+              <tr><td>W / H</td><td>+2</td><td>80</td></tr>
+              <tr><td>W / H</td><td>+1</td><td>70</td></tr>
+              <tr><td>W / H</td><td>0</td><td>60</td></tr>
+              <tr><td>W / H</td><td>-1</td><td>50</td></tr>
+              <tr><td>W / H</td><td>-2</td><td>40</td></tr>
+              <tr><td>W / H</td><td>-3</td><td>30</td></tr>
+
+              <tr><td>W / A</td><td>+3</td><td>100</td></tr>
+              <tr><td>W / A</td><td>+2</td><td>90</td></tr>
+              <tr><td>W / A</td><td>+1</td><td>80</td></tr>
+              <tr><td>W / A</td><td>0</td><td>70</td></tr>
+              <tr><td>W / A</td><td>-1</td><td>60</td></tr>
+              <tr><td>W / A</td><td>-2</td><td>50</td></tr>
+              <tr><td>W / A</td><td>-3</td><td>40</td></tr>
+
+              <tr><td>D / H</td><td>+3</td><td>36</td></tr>
+              <tr><td>D / H</td><td>+2</td><td>32</td></tr>
+              <tr><td>D / H</td><td>+1</td><td>28</td></tr>
+              <tr><td>D / H</td><td>0</td><td>24</td></tr>
+              <tr><td>D / H</td><td>-1</td><td>20</td></tr>
+              <tr><td>D / H</td><td>-2</td><td>16</td></tr>
+              <tr><td>D / H</td><td>-3</td><td>12</td></tr>
+
+              <tr><td>D / A</td><td>+3</td><td>42</td></tr>
+              <tr><td>D / A</td><td>+2</td><td>36</td></tr>
+              <tr><td>D / A</td><td>+1</td><td>30</td></tr>
+              <tr><td>D / A</td><td>0</td><td>24</td></tr>
+              <tr><td>D / A</td><td>-1</td><td>18</td></tr>
+              <tr><td>D / A</td><td>-2</td><td>12</td></tr>
+              <tr><td>D / A</td><td>-3</td><td>6</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin:12px 0 6px;font-family:'Bebas Neue',sans-serif;">Player Points</h3>
+        <table class="compact-table" aria-label="Player points" style="max-width:320px;">
+          <colgroup><col style="width:200px;"><col style="width:80px;"></colgroup>
+          <thead><tr><th>Action</th><th>Points</th></tr></thead>
+          <tbody>
+            <tr><td>Goal</td><td>30</td></tr>
+            <tr><td>Assist</td><td>15</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
