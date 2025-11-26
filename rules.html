@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rules - Football League</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fffbe6;}
+nav{background:#ff6f61;padding:12px 20px;display:flex;gap:20px;font-weight:bold;}
+nav a{color:#fff;text-decoration:none;font-size:18px;}
+.container{max-width:900px;margin:20px auto;padding:10px;}
+h1{font-size:42px;text-align:center;color:#ff3c3c;text-shadow:2px 2px #ffd700;margin-bottom:20px;}
+table{width:100%;border-collapse:collapse;background:#fff3e6;border-radius:12px;overflow:hidden;box-shadow:4px 4px 12px rgba(0,0,0,0.2);}
+th,td{padding:12px;text-align:left;border-bottom:1px solid #ffd699;}
+th{background:#ffb347;color:#fff;font-size:18px;}
+button{margin-top:12px;padding:8px 16px;background:#ff6f61;color:#fff;border:none;border-radius:8px;font-weight:bold;cursor:pointer;}
+</style>
+</head>
+<body>
+<nav>
+<a href="index.html">Home</a>
+<a href="predict.html">Predict</a>
+<a href="table.html">Table</a>
+<a href="rules.html">Rules</a>
+</nav>
+<div class="container">
+<h1>Scoring Rules</h1>
+<table>
+<thead><tr><th>Rule</th><th>Points</th></tr></thead>
+<tbody>
+<tr><td>Player goal</td><td>30</td></tr>
+<tr><td>Player assist</td><td>15</td></tr>
+<tr><td>Home win vs equal level</td><td>60</td></tr>
+</tbody>
+</table>
+<button onclick="copyCSV()">Copy Rules CSV</button>
+<script>
+function copyCSV(){
+  const csv="rule,label,points\n1,Player goal,30\n2,Player assist,15\n3,Home win vs equal level,60";
+  navigator.clipboard.writeText(csv);alert('Rules CSV copied!');
+}
+</script>
+</div>
+</body>
+</html>
